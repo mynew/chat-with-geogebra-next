@@ -1,0 +1,17 @@
+{
+  "name": "GeoGebra Agent Evaluation Dataset",
+  "version": "1.0.0",
+  "description": "手动标注的evaluation数据集，包含自然语言prompt和正确的GeoGebra指令",
+  "samples": [
+    {
+      "id": 1,
+      "prompt": "画一个以原点为圆心，半径为3的圆",
+      "expectedCommands": [
+        "O = (0, 0)",
+        "c = Circle(O, 3)"
+      ],
+      "description": "创建圆心在原点、半径为3的圆",
+      "category": "basic_geometry"
+    }
+  ]
+}

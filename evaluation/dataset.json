@@ -1,0 +1,159 @@
+{
+  "name": "GeoGebra Agent Evaluation Dataset",
+  "version": "1.0.0",
+  "description": "手动标注的evaluation数据集，包含自然语言prompt和正确的GeoGebra指令",
+  "samples": [
+    {
+      "id": 1,
+      "prompt": "画一个长轴为1，短轴可调的椭圆",
+      "expectedCommands": [
+        "b = Slider()",
+        "c = sqrt(0.5^2 - b^2)",
+        "F1 = (-c, 0)",
+        "F2 = (c, 0)",
+        "Ellipse(F1, F2, 0.5)"
+      ],
+      "coreCommands": [
+        "b = Slider()",
+        "F1 = (-c, 0)",
+        "F2 = (c, 0)",
+        "Ellipse(F1, F2, 0.5)"
+      ],
+      "description": "创建可调短轴的椭圆，使用滑块控制短轴长度",
+      "category": "conic_sections"
+    },
+    {
+      "id": 2,
+      "prompt": "在平面直角坐标系中，F1，F2分别为双曲线C: 3x^2-y^2=a^2（a>0）的左、右焦点，给过F2的直线l与双曲线C的右支交于A，B两点，当l与x轴垂直时，三角形ABF1的面积为12，画出这个图",
+      "expectedCommands": [
+        "a = Slider(0.1, 10, 0.1, 1, 200, false, true, false, false)",
+        "c = (2*a)/sqrt(3)",
+        "semia = a/sqrt(3)",
+        "F1 = (-c, 0)",
+        "F2 = (c, 0)",
+        "C = Hyperbola(F1, F2, semia)",
+        "l = x = c",
+        "l = Line(F2, (c, 1))",
+        "Intersect(l, C)",
+        "poly1 = Polygon(A, B, F1)"
+      ],
+      "coreCommands": [
+        "a = Slider(0.1, 10, 0.1, 1, 200, false, true, false, false)",
+        "F1 = (-c, 0)",
+        "F2 = (c, 0)",
+        "C = Hyperbola(F1, F2, semia)",
+        "l = x = c",
+        "Intersect(l, C)",
+        "poly1 = Polygon(A, B, F1)"
+      ],
+      "description": "绘制双曲线及其与直线的交点，构造三角形",
+      "category": "conic_sections"
+    },
+    {
+      "id": 3,
+      "prompt": "在三棱锥 P-ABC 中，三角形 ABC 在 A 处为直角，且 AB = AC = 2。已知 PA 垂直于平面 ABC，且 PA = 2。设 D 为线段 BC 的中点。画出这个图",
+      "expectedCommands": [
+        "SetPerspective(\"T\")",
+        "A = (0, 0, 0)",
+        "B = (2, 0, 0)",
+        "C = (0, 2, 0)",
+        "Distance(A, B)",
+        "Distance(A, C)",
+        "P = (0, 0, 2)",
+        "Distance(P, A)",
+        "D = Midpoint(B, C)",
+        "poly1 = Polygon(A, B, C)",
+        "poly2 = Polygon(P, A, B)",
+        "poly3 = Polygon(P, A, C)",
+        "Polygon(P, B, C)"
+      ],
+      "coreCommands": [
+        "SetPerspective(\"T\")",
+        "A = (0, 0, 0)",
+        "B = (2, 0, 0)",
+        "C = (0, 2, 0)",
+        "P = (0, 0, 2)",
+        "poly1 = Polygon(A, B, C)",
+        "poly2 = Polygon(P, A, B)",
+        "poly3 = Polygon(P, A, C)",
+        "Polygon(P, B, C)"
+      ],
+      "description": "绘制3D三棱锥，包含直角三角形底面和垂直的侧棱",
+      "category": "3d_geometry"
+    },
+    {
+      "id": 4,
+      "prompt": "在三角形 ABC 中，AB = 3，AC = 4，BC = 6，设 (O) 为 △ABC 的外接圆。过点 B、C 分别作 (O) 的切线，两切线相交于点 T。设直线 AT 交边 BC 于点 K",
+      "expectedCommands": [
+        "A = (0, 0)",
+        "B = (3, 0)",
+        "C = (-1.8333333333333333, 3.5551215012835904)",
+        "triangleABC = Polygon(A, B, C)",
+        "O = TriangleCenter(A, B, C, 3)",
+        "circumcircle = Circle(O, A)",
+        "tangentB = Tangent(B, circumcircle)",
+        "tangentC = Tangent(C, circumcircle)",
+        "T = Intersect(tangentB, tangentC)",
+        "lineAT = Line(A, T)",
+        "lineBC = Line(B, C)",
+        "K = Intersect(lineAT, lineBC)"
+      ],
+      "coreCommands": [
+        "A = (0, 0)",
+        "B = (3, 0)",
+        "C = (-1.8333333333333333, 3.5551215012835904)",
+        "triangleABC = Polygon(A, B, C)",
+        "O = TriangleCenter(A, B, C, 3)",
+        "circumcircle = Circle(O, A)",
+        "tangentB = Tangent(B, circumcircle)",
+        "tangentC = Tangent(C, circumcircle)",
+        "T = Intersect(tangentB, tangentC)",
+        "K = Intersect(lineAT, lineBC)"
+      ],
+      "description": "绘制三角形及其外接圆，构造切线和交点",
+      "category": "circle_geometry"
+    },
+    {
+      "id": 5,
+      "prompt": "",
+      "expectedCommands": [],
+      "description": "",
+      "category": ""
+    },
+    {
+      "id": 6,
+      "prompt": "",
+      "expectedCommands": [],
+      "description": "",
+      "category": ""
+    },
+    {
+      "id": 7,
+      "prompt": "",
+      "expectedCommands": [],
+      "description": "",
+      "category": ""
+    },
+    {
+      "id": 8,
+      "prompt": "",
+      "expectedCommands": [],
+      "description": "",
+      "category": ""
+    },
+    {
+      "id": 9,
+      "prompt": "",
+      "expectedCommands": [],
+      "description": "",
+      "category": ""
+    },
+    {
+      "id": 10,
+      "prompt": "",
+      "expectedCommands": [],
+      "description": "",
+      "category": ""
+    }
+  ]
+}
