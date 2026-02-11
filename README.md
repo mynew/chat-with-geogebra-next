@@ -68,6 +68,7 @@
 # 安装依赖
 pnpm install
 
+npm install -g bun
 # 运行开发环境
 pnpm dev
 ```
